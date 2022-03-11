@@ -1,0 +1,15 @@
+server:
+  port: 8082
+file:
+  path: './resources/input-file.csv'
+
+logging:
+  level:
+    root: INFO
+
+multipart:
+  enabled: true
+  file-size-threshold : 0 # Threshold after which files will be written to disk.
+  location: ${java.io.tmpdir} # Intermediate location of uploaded files.
+  max-file-size: 1Mb # Max file size.
+  max-request-size: 10Mb # Max request size.
