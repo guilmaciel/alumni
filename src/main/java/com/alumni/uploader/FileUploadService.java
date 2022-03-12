@@ -14,13 +14,23 @@ import java.util.Objects;
  *
  * Name: Guilherme Maciel.
  * Creation Date: 2022-03-11
- * Last Update: 2022-03-11
+ * Last Update: 2022-03-12
+ *
+ * Service class that will handle which file to be processed by the system.
  *
  */
 
 @Slf4j
 @Service
 public class FileUploadService {
+
+    /**
+     * Validates if a valid (not null) file was provided, and based on that fact proceeds with either processing
+     * the given file or using an internal one.
+     *
+     * @Param uploadedFile MultipartFile send by post call, an internal file will be used in case of null value provided
+     *
+     */
 
     @Autowired
     private FileProcessorService fileProcessorService;
@@ -34,7 +44,7 @@ public class FileUploadService {
                 fileProcessorService.processDataFromExternalFile(uploadedFile.getInputStream());
             } catch (IOException e) {
                 log.error("Error processing external file.", e);
-                throw new BadFileException("Error processing external file");
+                throw new BadFileException("Error processing the external file");
             }
 
         }

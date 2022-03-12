@@ -10,4 +10,9 @@ class AlumniApplicationTests {
 	void contextLoads() {
 	}
 
+	@Test
+	void main(){
+		AlumniApplication.main();
+	}
+
 }
