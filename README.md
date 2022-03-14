@@ -9,7 +9,7 @@ How to run this program:
 * Use the endpoints(instructions on how to use the below):
     * http://localhost:8082/upload
     * http://localhost:8082/hosts
-    * http://localhost:8082/hosts/hostId
+    * http://localhost:8082/hosts/{hostId}
 * Enjoy.
 #
 
@@ -20,7 +20,7 @@ Upload file data in the system:
     In order to upload a file to the system, you will need to make a post call to the endpoint /upload. in order to send
     a file to be proccessed, you need to send it as a param with the key "File".
     If you don't provide any file, the system will process an internal file (resources/input-file.csv).
-    The system will process one file at a time, and will override data with the same host name.
+    A Spring Batch job will be triggered and process the file
     You will get a Http Status 201 (Created) if the file processing is OK.
 
 Retrieve host information:

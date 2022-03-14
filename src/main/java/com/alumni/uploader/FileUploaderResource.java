@@ -14,7 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
  *
  * Name: Guilherme Maciel.
  * Creation Date: 2022-03-11
- * Last Update: 2022-03-12
+ * Last Update: 2022-03-13
  *
  * Controller class that handles the rest calls related to file uploading/processing.
  *
@@ -34,7 +34,6 @@ public class FileUploaderResource {
     /**
      * Enables post requests under the /upload endpoint, where a file with hosts information can be uploaded to the system.
      *
-     *
      * @param file file provided by the post call.
      * @return Returns a Response entity with HttpStatus Created. The status might be different if errors occur during the file processing.
      */
@@ -46,5 +45,4 @@ public class FileUploaderResource {
 
         return new ResponseEntity(FILE_SUCCESSFULLY_PROCESSED, HttpStatus.CREATED);
     }
-
 }

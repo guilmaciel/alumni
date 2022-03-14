@@ -1,20 +1,18 @@
 package com.alumni.host;
 
 import com.alumni.exception.HostNotFoundException;
-import com.alumni.utils.DataProcessorUtils;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.alumni.utils.DataProcessorUtils.entityToDto;
-
 /**
  *
  * Name: Guilherme Maciel.
  * Creation Date: 2022-03-11
- * Last Update: 2022-03-12
+ * Last Update: 2022-03-13
  *
  * Service that handles the Host related calls
  */
@@ -44,7 +42,19 @@ public class HostDataService {
      */
     public List<HostDataDto> getAll(){
         List<HostDataEntity> entities = repository.findAll();
-        List<HostDataDto> dtos = entities.stream().map(DataProcessorUtils::entityToDto).collect(Collectors.toList());
+        List<HostDataDto> dtos = entities.stream().map(HostDataService::entityToDto).collect(Collectors.toList());
         return dtos;
     }
+
+    /** Converts and HostDataEntity to a HostDataDto
+     *
+     * @param entity to be converted
+     * @return dto after conversion
+     */
+    private static HostDataDto entityToDto(HostDataEntity entity){
+        HostDataDto dto = new HostDataDto();
+        BeanUtils.copyProperties(entity, dto);
+        return dto;
+    }
+
 }

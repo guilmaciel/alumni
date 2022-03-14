@@ -1,4 +1,4 @@
-package com.alumni.processor;
+package com.alumni.batch;
 
 import lombok.Data;
 

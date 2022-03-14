@@ -1,7 +1,8 @@
 server:
   port: 8082
-file:
-  path: './resources/input-file.csv'
+batch:
+  file-name: batch-file.csv
+  path: ${java.io.tmpdir}
 
 logging:
   level:
@@ -13,3 +14,8 @@ multipart:
   location: ${java.io.tmpdir} # Intermediate location of uploaded files.
   max-file-size: 1Mb # Max file size.
   max-request-size: 10Mb # Max request size.
+
+spring:
+  batch:
+    job:
+      enabled: false
